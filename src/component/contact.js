@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 
-    // <body style={{padding: "10px", border: "1px solid #ccc"}}>
 const Contact = () => {
   return(
-      <>
+    <div className="container">
+      <div style={{padding: "10px", border: "1px solid #ccc"}}>
         <h1 style={{textAlign: "center"}}>Hubungi Kami</h1>
         <strong>Kantor :</strong>
         di jalan belum jadi
@@ -13,14 +13,7 @@ const Contact = () => {
         <br/>
         <strong>Email :</strong>
         email@contoh.com
-      </>
-
-  )
-}
-
-const Message = () => {
-  return(
-    <>
+      
       <h1 style={{textAlign: "center"}}>Kirimkan Pesan</h1>
         <div>
           <div style={{display: "block", marginBottom: "1em"}}>
@@ -61,13 +54,10 @@ const Message = () => {
           </button>
 
         </div>
-    </>
+    </div>
+    </div>
     
   )
 }
-  // </body>
-
-console.log(Contact);
-console.log(Message);
 
 export default Contact

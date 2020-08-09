@@ -9,22 +9,21 @@ class Home extends Component {
       }
     }
 
-    componentWillMount = () => {
-        // const {movie} = await axios.get(`http://backendexample.sanbercloud.com/api/movies`)
-
-            axios
-                .get(`http://backendexample.sanbercloud.com/api/movies`)
+    componentWillMount =(() => {
+        if(this.state.movies.length === 0){
+            axios.get(`http://backendexample.sanbercloud.com/api/movies`)
                 .then(res => {
-                    console.log(res.data);
-                    this.setState.movies(res.data.map(el => {return {title:el.title, description:el.description, year:el.year, duration:el.duration, genre:el.genre, rating:el.rating}
-                    }))  
+                    let data = res.data.map(el => {
+                        return {
+                            title:el.title, description:el.description, year:el.year, duration:el.duration, genre:el.genre, rating:el.rating
+                        }
+                    })
+                    this.setState({movies:data})
                 })
                 .catch(err => {
-                    console.log("error data!!!")
+                    console.log(err)
                 })
-                console.log(this.state.movies);
-        
-    }
+        }})
 
     // componentWillUnmount(){
     //     console.log(this.componentWillUnmount)
@@ -45,17 +44,15 @@ class Home extends Component {
                     return(
                         <div key={index}>
                         <h2>{title}</h2>
-                        <>
-                        Rating {rating}
-                        Duration: {duration}
-                        Genre: {genre}
-                        </>
-                        <p>Description: {description}</p>
+                            <b>Rating</b> {rating} <br/>
+                            <b>Duration:</b> {duration} minutes<br/>
+                            <b>Genre:</b> {genre} <br/>
+                        <p><b>Description:</b> {description}</p><hr/>
                         </div>                    
                     )
                     })
                 }
-                    
+  
         </>
         )
     }
